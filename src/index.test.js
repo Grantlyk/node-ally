@@ -1,13 +1,13 @@
 import test from 'tape-catch';
 import sinon from 'sinon';
 import {
-  supportCrossOriginScript,
+  supportCrossOrigin,
   notFound,
   errorHandler,
   enableCORS,
 } from './index.js';
 
-test('Lib SupportCrossOriginScript', assert => {
+test('Lib SupportCrossOrigin', assert => {
   const res = {
     status: sinon.spy(),
     header: sinon.spy(),
@@ -15,7 +15,7 @@ test('Lib SupportCrossOriginScript', assert => {
 
   const next = sinon.spy();
 
-  supportCrossOriginScript(null, res, next);
+  supportCrossOrigin(null, res, next);
 
   assert.ok(res.status.called, 'Status should be called');
   assert.ok(res.header.called, 'Header should be called');
@@ -32,7 +32,7 @@ test('Lib notFound', assert => {
 
   const next = sinon.spy();
   const expected = {
-    message: 'Pricing Service API - Endpoint Not Found',
+    message: 'Endpoint not Found',
     code: 404,
   };
 
@@ -43,7 +43,7 @@ test('Lib notFound', assert => {
   assert.same(
     json.lastArg,
     expected,
-    'Json should be passed the correct not found message'
+    'Json should be passed the correct not found message',
   );
   assert.end();
 });
@@ -67,7 +67,7 @@ test('Lib errorHandler', assert => {
   assert.same(
     json.lastArg,
     expected,
-    'Json should be passed the correct error message'
+    'Json should be passed the correct error message',
   );
 
   res.headersSent = true;
@@ -88,7 +88,7 @@ test('Lib enableCORS', assert => {
   assert.ok(res.header.called, 'should have called the header function');
   assert.ok(
     res.header.calledThrice,
-    'should have called the header function three times'
+    'should have called the header function three times',
   );
   assert.ok(next.called, 'should have called the next function');
   assert.end();
