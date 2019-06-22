@@ -1,13 +1,12 @@
 {
-  "name": "ally",
-  "version": "1.0.0",
+  "name": "node-ally",
+  "version": "1.0.1",
   "description": "A collection of express middleware helpers",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "scripts": {
-    "prepublish": "rm -rf node_modules && npm i && npm run test && npm run build",
     "build": "babel src -d lib",
     "test": "tape -r @babel/register -r @babel/polyfill src/**/*.test.js | tap-spec",
     "test:watch": "tape-watch -r @babel/register -r @babel/polyfill src/**/*.test.js | tap-spec",
@@ -16,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Grantlyk/ally.git"
+    "url": "git+https://github.com/Grantlyk/node-ally.git"
   },
   "author": "Grant Leadbetter <grant@nespite.io> (www.nespite.io)",
   "license": "MIT",
