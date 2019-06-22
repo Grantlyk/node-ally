@@ -2,8 +2,12 @@
   "name": "ally",
   "version": "1.0.0",
   "description": "A collection of express middleware helpers",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "prepublish": "rm -rf node_modules && npm i && npm run test && npm run build",
     "build": "babel src -d lib",
     "test": "tape -r @babel/register -r @babel/polyfill src/**/*.test.js | tap-spec",
     "test:watch": "tape-watch -r @babel/register -r @babel/polyfill src/**/*.test.js | tap-spec",
