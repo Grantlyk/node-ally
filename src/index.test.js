@@ -5,6 +5,7 @@ import {
   notFound,
   errorHandler,
   enableCORS,
+  requestTime,
 } from './index.js';
 
 test('Lib SupportCrossOrigin', assert => {
@@ -89,6 +90,21 @@ test('Lib enableCORS', assert => {
   assert.ok(
     res.header.calledThrice,
     'should have called the header function three times',
+  );
+  assert.ok(next.called, 'should have called the next function');
+  assert.end();
+});
+
+test('Lib requestTime', assert => {
+  const req = {};
+  const next = sinon.spy();
+
+  requestTime(req, null, next);
+
+  assert.same(
+    typeof req.requestTime,
+    typeof Date.now(),
+    'should have set a date',
   );
   assert.ok(next.called, 'should have called the next function');
   assert.end();
