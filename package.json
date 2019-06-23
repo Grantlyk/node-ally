@@ -1,6 +1,6 @@
 {
   "name": "node-ally",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collection of express middleware helpers",
   "main": "lib/index.js",
   "files": [
