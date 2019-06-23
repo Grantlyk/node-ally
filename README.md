@@ -24,15 +24,18 @@ node-ally is an extremely small and easy to use library, it currently contains f
 
 - `notFound` - This middleware function will return an appropriate error to the client if they hit an endpoint that doesn't exist in your API
 
+- `requestTime` - This middleware records the time of the request and puts it on the req object
+
 ```javascript
 import express from 'express';
-import { errorHandler, enableCORS, notFound } from 'node-ally';
+import { errorHandler, enableCORS, notFound, requestTime } from 'node-ally';
 
 const app = express();
 
 app.use(enableCORS);
 app.use(notFound);
 app.use(errorHandler);
+app.use(requestTime);
 
 export default app;
 ```
@@ -64,6 +67,8 @@ npm test
 
 ## Release History
 
+- 1.0.4
+  - ADD: Added middleware function that added the current time to the req object
 - 1.0.3
   - ADD: Added this readme file
   - ADD: added travis CI to the project

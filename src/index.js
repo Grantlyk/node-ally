@@ -30,3 +30,16 @@ export function supportCrossOrigin(req, res, next) {
   res.status(200);
   enableCORS(req, res, next);
 }
+
+export function requestTime(req, res, next) {
+  req.requestTime = Date.now();
+  next();
+}
+
+export default {
+  errorHandler,
+  enableCORS,
+  notFound,
+  supportCrossOrigin,
+  requestTime,
+};
